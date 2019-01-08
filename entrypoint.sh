@@ -18,8 +18,11 @@ if [ ! -f ${PG_CONFIG_DIR}/pgbouncer.ini ]; then
 # Config file is in “ini” format. Section names are between “[” and “]”.
 # Lines starting with “;” or “#” are taken as comments and ignored.
 # The characters “;” and “#” are not recognized when they appear later in the line.
+# Replicas have a "secondary", the master, as a fallback in case the replica goes down
+
 [databases]
-*= port=${DB_PORT:-5432} user=${DB_USER:-postgres} ${DB_PASSWORD:+password=${DB_PASSWORD}} host=${DB_HOST}
+db= port=${DB_PORT:-5432} user=${DB_USER:-postgres} ${DB_PASSWORD:+password=${DB_PASSWORD}} host=${DB_HOST}
+*= port=${DB_PORT:-5432} user=${DB_USER:-postgres} ${DB_PASSWORD:+password=${DB_PASSWORD}} host=${DB_MASTER_HOST}
 
 [pgbouncer]
 # Generic settings

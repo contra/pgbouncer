@@ -1,6 +1,5 @@
-## Synopsis
+## Replica image
 
-> Replica support is on branch `replica`
 
 **pgbouncer** is a popular, small connection pooler for Postgresql. This is yet another docker image with pgbouncer, based on alpine.
 
@@ -12,27 +11,18 @@ $ docker run -d \
  -e DB_HOST=postgresql.example.com \
  -e DB_USER=admin \
  -e DB_PASSWORD=mypassword \
- brainsam/pgbouncer:latest
+ stevelacy/pgbouncer:replica
 ```
 Or You can mount config file into docker container:
 ```bash
 $ docker run -d \
  --name pgbouncer \
  -v pgbouncer-config-file:/etc/pgbouncer/pgbouncer.ini \
- brainsam/pgbouncer:latest
+ stevelacy/pgbouncer:replica
 ```
 
 ## Installation
 
 ```bash
-$ docker pull brainsam/pgbouncer:latest
-```
-## Configuration
-
-All configuration parameters of pgbouncer are available both by *--env* (use the same keys in upper case) and by mounting pgbouncer.ini into container.
-
-#### Troubleshooting
-
-```
-docker logs <your-pgbouncer-container-name>
+$ docker pull stevelacy/pgbouncer:replica
 ```
